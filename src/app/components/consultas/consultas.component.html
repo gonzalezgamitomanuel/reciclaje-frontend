@@ -1,0 +1,46 @@
+<div class="container">
+    
+  <div class="form-group">
+    <p> Position: 
+      <input
+      type="text"
+      class="forms-control"
+      placeholder="Buscar..."
+      [(ngModel)]="filterpost"
+      name="filterpost"
+      />
+    </p>
+  </div>
+</div>
+
+<a (click)="irMapaGrupo()" class="btn btn-secondary btn-sm">
+  <i class="material-icons">mapa</i>
+</a>
+<div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Longitude</th>
+        <th>Latitude</th>
+        <th>Salary</th>
+        <th>Operations</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeService.employees | filter: filterpost">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.office }}</td>
+          <td>{{ employee.longitude }}</td>
+          <td>{{ employee.latitude }}</td>
+          <td>{{ employee.salary }}</td>
+            <td>
+            <a (click)="irMapa(employee)" class="btn btn-secondary btn-sm">
+              <i class="material-icons">mapa</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
